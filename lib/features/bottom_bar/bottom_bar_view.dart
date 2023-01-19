@@ -18,7 +18,7 @@ class BottomBarView extends StatefulWidget {
 }
 
 class _BottomBarViewState extends State<BottomBarView> {
-  int _selectedIndex = 5;
+  int _selectedIndex = 0;
 
   static const List<Map<String, dynamic>> _pages = [
     {
