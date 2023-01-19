@@ -7,6 +7,8 @@
 A new Flutter project.
 
 ## Getting Started
+## get code
+    git clone https://github.com/abdalmuneim/Zeeddo_DashBoard.git
 
 ## Installation
     flutter pub get
