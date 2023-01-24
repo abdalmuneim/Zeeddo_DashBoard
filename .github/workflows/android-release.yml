@@ -1,0 +1,138 @@
+name: Android Release
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events for the "release" branch;
+  # you can change it according to your requirement
+
+  pull_request:
+    types: [closed]
+    branches: ["main"]
+
+  # Allows you to run this workflow manually from the Actions tab from your GitHub repo
+  # (a workflow run is made up of one or more jobs that can run sequentially or in parallel)
+
+  workflow_dispatch:
+
+# currently Contains one job that do all process from build to deploy
+jobs:
+  build:
+    # to only merge if there is a merge action
+    if: github.event.pull_request.merged == true
+    # Contains the type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Uses steps to represent a sequence of tasks that will be executed as part of job
+    steps:
+      # Readies your repository under $GITHUB_WORKSPACE, so your job can access it
+
+      - uses: actions/checkout@v3
+
+      # Sets up Java so your job can use it for the Flutter app build
+      - uses: actions/setup-java@v3
+        with:
+          distribution: "zulu"
+          java-version: "12.x"
+          # providing Gradle to be cached with respect to the Java SDK
+          cache: "gradle"
+
+      # Sets up Flutter using the subosito Flutter workflow
+      - uses: subosito/flutter-action@v2
+        with:
+          # Adjusts to the Flutter version you are working with
+          flutter-version: "3.3.10"
+          channel: "stable"
+          # enabling caching for the Flutter SDK
+          cache: true
+
+      # caching build  - gradle  - pub-cache
+      - name: Cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            build/
+            android/.gradle/
+          key: ${{ runner.os }}-build_and_android-${{ hashFiles('**/*.gradle*', 'pubspec.lock') }}
+
+      # Runs a single command using the runner’s shell
+      - name: Get dependencies
+        run: flutter pub get
+
+      # analyzing the app to know that there is an build issue or not
+      - name: Run analyzer
+        run: flutter analyze
+
+      # Read the updated version from version1.txt file
+      - name: Read release version
+        id: read-version
+        uses: NiklasLehnfeld/flutter-version-number-action@main
+        with:
+          file-path: pubspec.yaml
+
+      # Decoded the base64 encoded keystore value saved as a secret to ID android_keystore
+      # - name: Download Android keystore
+      #   id: android_keystore
+      #   uses: timheuer/base64-to-file@v1.0.3
+      #   with:
+      #     fileName: upload-keystore.jks
+      #     # can be obtained by doing this command line base64 <keystore path> then save it in github actions
+      #     encodedString: ${{ secrets.KEYSTORE_BASE64 }}
+
+      # --- Created key.properties using the secrets and android_keystore ---
+      # - name: Create key.properties
+      #   run: |
+      #     echo "storeFile=${{ steps.android_keystore.outputs.filePath }}" > android/key.properties
+      #     echo "storePassword=${{ secrets.STORE_PASSWORD }}" >> android/key.properties
+      #     echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> android/key.properties
+      #     echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> android/key.properties
+
+      # Runs a set of commands using the runners shell
+      # - name: Start release build aab
+      #   run: flutter build appbundle --release
+
+      # Uploaded the AAP release as an artifact to be used in the next job
+      # - name: Upload AAP Release
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #     name: aap-release
+      #     path: build/app/outputs/bundle/release/app-release.aab
+
+      - name: Start release build APK
+        run: flutter build apk --release
+
+      # Uploaded the APK release as an artifact to be used in the next job
+      - name: Upload APK Release
+        uses: actions/upload-artifact@v2
+        with:
+          name: apk-release
+          path: build/app/outputs/flutter-apk/app-release.apk
+
+      # --- creating github apk-release ---
+      - name: Create apk-release in GitHub
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "build/app/outputs/flutter-apk/app-release.apk"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: apk_Release_${{ steps.read-version.outputs.version-number }}
+          allowUpdates: true
+
+      # --- creating github aap-release ---
+      - name: Create aap-release in GitHub
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "build/app/outputs/bundle/release/app-release.aab"
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: aap_Release_${{ steps.read-version.outputs.version-number }}
+          allowUpdates: true
+
+      # --- Deploy to google play store ---
+      # Used the upload-google.play@v1 workflow with the PLAYSTORE_ACCOUNT_KEY secret,
+      # your app package name, the track in which you want to upload the build and its status
+      # PLAYSTORE_ACCOUNT_KEY can be obtained by the following steps https://drive.google.com/file/d/1E2GzLN_Tl06qowA8j6_3ohTjdLWHEX7t/view?usp=sharing
+      # - name: Release Build to internal track
+      #   uses: r0adkll/upload-google-play@v1
+      #   with:
+      #     serviceAccountJsonPlainText: ${{ secrets.PLAYSTORE_ACCOUNT_KEY }}
+      #     packageName: com.app.sharrae
+      #     releaseFiles: build/app/outputs/bundle/release/app-release.aab
+      #     track: internal
