@@ -1,0 +1,49 @@
+name: shahrukh_s_application1
+description: A new Flutter project.
+version: 1.0.0+1
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+dependencies:
+  flutter:
+    sdk: flutter
+
+  get: ^4.6.5
+  get_storage: ^2.1.1
+  equatable:
+
+  get_it: ^7.2.0
+  http: ^0.13.5
+  internet_connection_checker_plus: ^1.0.1
+  flutter_secure_storage: ^7.0.1
+
+  lottie: ^2.2.0
+  cached_network_image: ^3.2.1
+  flutter_svg: ^1.1.6
+  flutter_switch: ^0.3.2
+  intl: ^0.17.0
+  geolocator: ^9.0.2
+  permission_handler: ^10.2.0
+  geocoding: ^2.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_launcher_icons: ^0.12.0
+flutter_icons:
+  image_path_android: "assets/images/logo-with-container.png"
+  image_path_ios: "assets/images/logo-with-container.png"
+  android: true
+  ios: true
+  remove_alpha_ios: true
+  min_sdk_android: 21
+
+  web:
+    generate: true
+    image_path: "assets/images/logo-with-container.png"
+    background_color: "#hexcode"
+    theme_color: "#hexcode"
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
+    - assets/images/
