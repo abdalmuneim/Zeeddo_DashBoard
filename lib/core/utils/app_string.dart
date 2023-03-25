@@ -1,10 +1,13 @@
 class AppString {
+  ///login
   static String get loginTitle => "Start your \nShop";
   static String get notHaveAccount => "Don't have an account yet?";
   static String get createAccount => "Create an account";
   static String get user => "User";
   static String get password => "Password";
   static String get login => "LOG IN";
+  static String get lets => "Let\'s ";
+  static String get go => "go!";
 
   static String get pleaseFillThisField => "Please Fill This Field";
   static String get surEmailError => "Please check the email!";
@@ -26,6 +29,17 @@ class AppString {
   static String get title4 => "multi themes\nselections";
   static String get des4 => "variable themes options\nfor online store";
   static String get skip => "Skip";
+
+  /// register
+  static String get createAn => "Create an";
+  static String get account => "account";
+  static String get shopName => "Shop Name";
+  static String get shopNameHint => "Enter your shop name";
+  static String get confirmPassword => "Confirm Password";
+
+  static String get setupYourShop => "Setup your Shop";
+  static String get haveAccount => "Already have account? ";
+  static String get loginReg => "Login";
 
   /// loyaltyProgram
   static String get loyaltyProgram => "Loyalty Program";
@@ -104,16 +118,77 @@ class AppString {
   static String themeCustomize = "Theme Customize";
 
   /// Add Product
-  static String nineScreen = "Add Product";
+  static String addProduct = "Add Product";
+  static String productName = "Product Name";
+  static String firstProduct = "Enter Your First Product Name.";
+  static String productPrice = "Product Price";
+  static String productPriceDesc =
+      "Enter Your Product Price & Offer Price with Currency.";
+  static String currency = "Currency";
+  static String price = "Price";
+  static String offerPrice = "Offer Price";
+  static String productTags = "Product Tags";
+  static String tags = "Tags";
+  static String productYouTubeUrl = "Product YouTube Url";
+  static String aboutProduct = "About the Product";
+  static String briefDetailsProduct = "Brief Details about the Product";
+  static String productDescription = "About the Product description";
+  static String update = "Update";
 
   /// branding
   static String branding = "Branding";
+  static String storeName = "Store Name";
+  static String chooseName =
+      "Choose a name for your store. This will be included in the browser tab title or store pages.";
+  static String visualIdentity = "Visual Identity";
+  static String visualIdentityDesc =
+      "Upload a logo of your store in a supported format(JPEG,GIF or PNG). We recommend a size of about 150*30 Pixels";
+  static String logoBrowse = "Logo Browse";
+  static String sliderImage = "Slider Image";
+  static String sliderImageDesc =
+      "Upload a logo of your store in a supported format(JPEG,GIF or PNG). We recommend a size of about 1024*800 Pixels";
+  static String sliderBrowse = "Slider Browse";
+  static String favicon = "Favicon";
+  static String faviconDesc =
+      "You may also upload a favicon This is a small icon that'll appear in the visitor's browser tab, and is usually a smaller version of your logo(if you don't have one already, check out this. We recommend the favicon format to be PNG,with the size of 196*196px.)";
+  static String faviconImageBrowse = "Favicon Image Browse";
+  static String alternativeImage = "Alternative Image";
+  static String alternativeImageDesc =
+      "This Alternative image will appear for product/s that you didn't upload images of yet until their images are ready to be uploaded";
+  static String alternativeImageBrowse = "Alternative mage Browse";
 
   /// Coupon
   static String coupon = "Coupon";
+  static String addNewCoupon = "Add New Coupon";
+  static String storeBasicInfo = "Your Store Basic Information";
+  static String couponText = "Coupon Text";
+  static String couponType = "Coupon Type";
+  static String couponTypeHint = "Percentage of total customer";
+  static String couponValue = "Coupon Value";
+  static String minimumPurchase = "Minimum Purchase";
+  static String startDate = "Start Date";
+  static String startTime = "Start Time";
+  static String expiryDate = "Expiry Date";
+  static String expiryTime = "Expiry Time";
+  static String timeHint = "00:00:00";
+  static String excludedOfferProduct = "Excluded Offer Product";
+  static String numberOfUses = "Number of uses";
+  static String selectNumber = "Select Number";
+  static String frequencyOfUsePerCustomer = "Frequency of use per customer";
 
   /// Subscription
   static String subscription = "Subscription";
+  static String addNewSubscription = "Add New Subscription";
+  static String subscriptionInfo = "Subscription Information";
+  static String title = "Title";
+  static String duration = "Duration";
+  static String selectDuration = "Select Duration";
+  static String priceUSD = "Price \$";
+  static String offerPriceUSD = "Offer Price \$";
+  static String allowShopToAdd = "Allow Shop to Add";
+  static String allowStaffToAdd = "Allow Staff to Add";
+  static String description = "Description";
+  static String descriptionHint = "Introduce About Your Store Description";
 
   /// Staff
   static String staff = "Staff";
@@ -141,7 +216,61 @@ class AppString {
 
   /// Shop
   static String shop = "Shop";
+  static String addYourShop = "Add Your Shop";
+  static String shopName2Hint = "eg. Asus Electronic Shop";
+  static String shopAlias = "Shop Alias";
+  static String shopAliasHint = "eg. asus-electronic-shop";
+  static String ownerName = "Owner Name";
+  static String ownerNameHint = "eg. John Dave";
+  static String yourStoreAddressDetails = "Your Store Address Details";
+  static String uploadYourStoreLogo = "Upload Your Store Logo";
+  static String uploadYourStoreLogoBTN =
+      "Click to choose file or Drop\nyour file from other location.";
+  static String yourStoreCategories = "Your Store Categories";
+  static String yourStoreGalleryPictures = "Your Store Gallery Pictures";
+  static String introduceAboutYourStore = "Introduce About Your Store";
 
   /// Product
   static String product = "Product";
+  static String addNewProduct = "Add New Product";
+  static String selectYourShop = "Select Your Shop";
+  static String productBasicInfo = "Product Basic Information";
+  static String status = "Status";
+  static String available = "Available";
+  static String notAvailable = "Not Available";
+  static String currencyINR = "₹ INR";
+  static String stockKeeping = "Stock Keeping unit(SKU)";
+  static String stockKeepingHint = "Stock Keeping Unit";
+  static String quantity = "Quantity";
+  static String colors = "Colors";
+  static String youTubeUrl = "YouTube Url";
+  static String isFeature = "Is Feature";
+  static String isPopular = "Is Popular";
+  static String isShippingFree = "Is Shipping Free";
+  static String productDimensionsWeight = "Product Dimensions / Weight";
+  static String dimensionUnit = "Dimension Unit";
+  static String cM = "CM";
+  static String length = "Length(cm)";
+  static String width = "Width(cm)";
+  static String height = "Height(cm)";
+  static String weightUnit = "Weight Unit";
+  static String weight = "Weight";
+  static String gram = "Gram";
+  // static String productDimensionsWeight = "Product Dimensions / Weight";
+  static String uploadProductPictures = "Upload Product Pictures";
+  static String productDescriptionHint = "Product Description";
+  static String productBuyReturnPolicy = "Product Buy/Return Policy";
+  static String productWarrantyPolicy = "Product Warranty Policy";
+  static String localSellerWarranty = "Local Seller Warranty";
+  static String noWarranty = "No Warranty";
+  static String manufacturerWarranty = "Manufacturer Warranty";
+  static String nonLocalWarranty = "Non-Local warranty";
+  static String warrantyPolicyDescription = "Warranty Policy Description";
+  static String productCustomization = "Product Customization";
+  static String productCustomizationHint = "Customization";
+  static String addMore = "+ Add More";
+  static String productSEO = "Product SEO";
+  static String metaTitle = "Meta Title";
+  static String metaKeywords = "Meta Keywords";
+  static String metaDescription = "Meta Description";
 }

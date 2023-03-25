@@ -131,19 +131,26 @@ class LoyaltyProgramView extends StatelessWidget {
                       textAlign: TextAlign.start,
                     ),
                     10.sh,
-                    Container(
-                      alignment: Alignment.center,
-                      width: double.infinity,
-                      height: getVerticalSize(100),
-                      decoration: BoxDecoration(
-                        color: ColorConstant.containerColor,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: CustomText(
-                        title: AppString.dragAndDrop,
-                        color: ColorConstant.buttonColor,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 11,
+                    InkWell(
+                      onTap: () {},
+                      borderRadius: BorderRadius.circular(10),
+                      highlightColor: ColorConstant.mainApp,
+                      hoverColor: ColorConstant.mainApp,
+                      splashColor: ColorConstant.mainApp,
+                      child: Container(
+                        alignment: Alignment.center,
+                        width: double.infinity,
+                        height: getVerticalSize(100),
+                        decoration: BoxDecoration(
+                          color: ColorConstant.containerColor.withOpacity(.9),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: CustomText(
+                          title: AppString.dragAndDrop,
+                          color: ColorConstant.buttonColor,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 11,
+                        ),
                       ),
                     ),
                     26.sh,

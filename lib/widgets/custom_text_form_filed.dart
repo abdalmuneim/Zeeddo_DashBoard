@@ -23,6 +23,7 @@ class CustomTextFormField extends StatefulWidget {
     this.enabled,
     this.height = 53,
     this.maxLines = 1,
+    this.minLines = 1,
     this.enabledBorder = true,
     this.textAlign = TextAlign.start,
     this.isNumberOnly = false,
@@ -36,6 +37,7 @@ class CustomTextFormField extends StatefulWidget {
   final Color suffixIconColor;
   final bool? filled, obscureText;
   final int? maxLines;
+  final int? minLines;
   final double? height;
 
   final bool isNumberOnly;
@@ -63,6 +65,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       height: widget.height,
       child: TextFormField(
         maxLines: widget.maxLines,
+        minLines: widget.minLines,
         enabled: widget.enabled,
         validator: widget.validator,
         controller: widget.textEditingController,
@@ -88,12 +91,21 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           hintText: widget.hintText,
           labelText: widget.labelText,
           labelStyle: Theme.of(context).textTheme.labelLarge?.copyWith(
-                fontSize: 12,
+                fontSize: 18,
                 color: ColorConstant.labelTextColor,
+              ),
+          hintStyle: Theme.of(context).textTheme.labelLarge?.copyWith(
+                fontSize: 18,
+                color: ColorConstant.grey,
               ),
           filled: true,
           fillColor: widget.fillColor,
-          border: InputBorder.none,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(widget.borderRadius),
+            borderSide: widget.enabledBorder!
+                ? BorderSide(color: ColorConstant.redColor)
+                : BorderSide.none,
+          ),
           enabledBorder: OutlineInputBorder(
             borderSide: widget.enabledBorder!
                 ? BorderSide(color: ColorConstant.redColor)
@@ -105,7 +117,9 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             borderRadius: BorderRadius.circular(widget.borderRadius),
           ),
           errorBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: Colors.red),
+            borderSide: const BorderSide(
+              color: Colors.red,
+            ),
             borderRadius: BorderRadius.circular(widget.borderRadius),
           ),
           focusedBorder: OutlineInputBorder(

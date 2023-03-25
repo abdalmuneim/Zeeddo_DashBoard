@@ -24,6 +24,7 @@ dependencies:
   geolocator: ^9.0.2
   permission_handler: ^10.2.0
   geocoding: ^2.1.0
+  flutter_colorpicker: ^1.0.3
 
 dev_dependencies:
   flutter_test:

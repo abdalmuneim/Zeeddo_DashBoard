@@ -4,28 +4,28 @@ import 'package:shahrukh_s_application1/features/splash/binding/splash_binding.d
 import 'package:shahrukh_s_application1/features/splash/view/splash_view.dart';
 import 'package:shahrukh_s_application1/features/login/view/login_view.dart';
 import 'package:shahrukh_s_application1/features/login/binding/login_binding.dart';
-import 'package:shahrukh_s_application1/features/zeedoo_signup_screen/zeedoo_signup_screen.dart';
-import 'package:shahrukh_s_application1/features/zeedoo_signup_screen/binding/zeedoo_signup_binding.dart';
+import 'package:shahrukh_s_application1/features/signup/view/signup_view.dart';
+import 'package:shahrukh_s_application1/features/signup/binding/signup_binding.dart';
 import 'package:shahrukh_s_application1/features/theme_customize/view/theme_customize_view.dart';
 import 'package:shahrukh_s_application1/features/theme_customize/binding/theme_customize_binding.dart';
 import 'package:shahrukh_s_application1/features/loyalty_program/view/loyalty_program_view.dart';
 import 'package:shahrukh_s_application1/features/loyalty_program/binding/loyalty_program_binding.dart';
-import 'package:shahrukh_s_application1/features/zeedoo_screen_nine_screen/zeedoo_screen_nine_screen.dart';
-import 'package:shahrukh_s_application1/features/zeedoo_screen_nine_screen/binding/zeedoo_screen_nine_binding.dart';
-import 'package:shahrukh_s_application1/features/zeedoo_screen_ten_screen/zeedoo_screen_ten_screen.dart';
-import 'package:shahrukh_s_application1/features/zeedoo_screen_ten_screen/binding/zeedoo_screen_ten_binding.dart';
+import 'package:shahrukh_s_application1/features/add_product/view/add_product_view.dart';
+import 'package:shahrukh_s_application1/features/add_product/binding/add_product_binding.dart';
+import 'package:shahrukh_s_application1/features/branding/view/branding_view.dart';
+import 'package:shahrukh_s_application1/features/branding/binding/branding_binding.dart';
 import 'package:shahrukh_s_application1/features/dashboard/view/dashboard_view.dart';
 import 'package:shahrukh_s_application1/features/dashboard/binding/dashboard_binding.dart';
-import 'package:shahrukh_s_application1/features/zeedoo_screen_twelve_screen/zeedoo_screen_twelve_screen.dart';
-import 'package:shahrukh_s_application1/features/zeedoo_screen_twelve_screen/binding/zeedoo_screen_twelve_binding.dart';
-import 'package:shahrukh_s_application1/features/zeedoo_screen_thirteen_screen/zeedoo_screen_thirteen_screen.dart';
-import 'package:shahrukh_s_application1/features/zeedoo_screen_thirteen_screen/binding/zeedoo_screen_thirteen_binding.dart';
+import 'package:shahrukh_s_application1/features/coupon/view/coupon_view.dart';
+import 'package:shahrukh_s_application1/features/coupon/binding/coupon_binding.dart';
+import 'package:shahrukh_s_application1/features/subscription/view/subscription_view.dart';
+import 'package:shahrukh_s_application1/features/subscription/binding/subscription_binding.dart';
 import 'package:shahrukh_s_application1/features/staff/view/staff_view.dart';
 import 'package:shahrukh_s_application1/features/staff/binding/staff_binfing.dart';
-import 'package:shahrukh_s_application1/features/zeedoo_screen_fifteen_screen/zeedoo_screen_fifteen_screen.dart';
-import 'package:shahrukh_s_application1/features/zeedoo_screen_fifteen_screen/binding/zeedoo_screen_fifteen_binding.dart';
-import 'package:shahrukh_s_application1/features/zeedoo_screen_sixteen_screen/zeedoo_screen_sixteen_screen.dart';
-import 'package:shahrukh_s_application1/features/zeedoo_screen_sixteen_screen/binding/zeedoo_screen_sixteen_binding.dart';
+import 'package:shahrukh_s_application1/features/shop/shop_view.dart';
+import 'package:shahrukh_s_application1/features/shop/binding/shop_binding.dart';
+import 'package:shahrukh_s_application1/features/product/view/product_view.dart';
+import 'package:shahrukh_s_application1/features/product/binding/product_binding.dart';
 import 'package:get/get.dart';
 
 class AppRoutes {
@@ -78,7 +78,7 @@ class AppRoutes {
       name: signupScreen,
       page: () => ZeedooSignupScreen(),
       bindings: [
-        ZeedooSignupBinding(),
+        SignupBinding(),
       ],
     ),
     GetPage(
@@ -99,14 +99,14 @@ class AppRoutes {
       name: addProduct,
       page: () => ZeedooScreenNineScreen(),
       bindings: [
-        ZeedooScreenNineBinding(),
+        AddProductBinding(),
       ],
     ),
     GetPage(
       name: branding,
       page: () => ZeedooScreenTenScreen(),
       bindings: [
-        ZeedooScreenTenBinding(),
+        BrandingBinding(),
       ],
     ),
     GetPage(
@@ -120,14 +120,14 @@ class AppRoutes {
       name: coupon,
       page: () => ZeedooScreenTwelveScreen(),
       bindings: [
-        ZeedooScreenTwelveBinding(),
+        CouponBinding(),
       ],
     ),
     GetPage(
       name: subscription,
-      page: () => ZeedooScreenThirteenScreen(),
+      page: () => SubscriptionView(),
       bindings: [
-        ZeedooScreenThirteenBinding(),
+        SubscriptionBinding(),
       ],
     ),
     GetPage(
@@ -139,16 +139,16 @@ class AppRoutes {
     ),
     GetPage(
       name: shop,
-      page: () => ZeedooScreenFifteenScreen(),
+      page: () => ShopView(),
       bindings: [
-        ZeedooScreenFifteenBinding(),
+        ShopBinding(),
       ],
     ),
     GetPage(
       name: product,
       page: () => ZeedooScreenSixteenScreen(),
       bindings: [
-        ZeedooScreenSixteenBinding(),
+        ProductBinding(),
       ],
     ),
     GetPage(

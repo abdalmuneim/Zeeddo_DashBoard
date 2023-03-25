@@ -57,7 +57,7 @@ class MyDrawer extends StatelessWidget {
 
               /// Add Product
               ListTile(
-                title: Text(AppString.nineScreen),
+                title: Text(AppString.addProduct),
                 leading: Icon(Icons.add_shopping_cart_rounded),
                 onTap: () {
                   scaffoldKey.currentState?.closeDrawer();
