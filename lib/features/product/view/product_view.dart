@@ -42,7 +42,7 @@ class ZeedooScreenSixteenScreen extends StatelessWidget {
                       fontSize: 20,
                     ),
 
-                    /// Add New Staff
+                    /// Add New
                     Padding(
                       padding: const EdgeInsets.only(
                         top: 18.0,
@@ -140,10 +140,13 @@ class ZeedooScreenSixteenScreen extends StatelessWidget {
                       fontSize: 12,
                     ),
                     4.sh,
-                    CustomTextFormField(
-                      enabledBorder: true,
-                      hintText: AppString.currencyINR,
-                      textEditingController: controller.currencyINR,
+                    CustomDropdown<String>(
+                      hint: AppString.selectYourShop,
+                      items: controller.currencies,
+                      value: controller.selectedCurrency.isEmpty
+                          ? null
+                          : controller.selectedCurrency,
+                      onChanged: controller.selectCurrency,
                     ),
                     13.sh,
 
@@ -209,9 +212,13 @@ class ZeedooScreenSixteenScreen extends StatelessWidget {
                       fontSize: 12,
                     ),
                     4.sh,
-                    CustomTextFormField(
-                      enabledBorder: true,
-                      hintText: AppString.category,
+                    CustomDropdown<String>(
+                      hint: AppString.category,
+                      items: controller.categories,
+                      value: controller.selectedCategory.isEmpty
+                          ? null
+                          : controller.selectedCategory,
+                      onChanged: controller.selectCategory,
                     ),
                     13.sh,
 
@@ -222,9 +229,13 @@ class ZeedooScreenSixteenScreen extends StatelessWidget {
                       fontSize: 12,
                     ),
                     4.sh,
-                    CustomTextFormField(
-                      enabledBorder: true,
-                      hintText: AppString.subCategory,
+                    CustomDropdown<String>(
+                      hint: AppString.subCategory,
+                      items: controller.subCategories,
+                      value: controller.selectedSubCategory.isEmpty
+                          ? null
+                          : controller.selectedSubCategory,
+                      onChanged: controller.selectSubCategory,
                     ),
 
                     13.sh,
@@ -279,9 +290,13 @@ class ZeedooScreenSixteenScreen extends StatelessWidget {
                       fontSize: 12,
                     ),
                     4.sh,
-                    CustomTextFormField(
-                      enabledBorder: true,
-                      hintText: AppString.tags,
+                    CustomDropdown<String>(
+                      hint: AppString.tags,
+                      items: controller.tags,
+                      value: controller.selectedTag.isEmpty
+                          ? null
+                          : controller.selectedTag,
+                      onChanged: controller.selectTag,
                     ),
                     13.sh,
 
@@ -486,7 +501,7 @@ class ZeedooScreenSixteenScreen extends StatelessWidget {
                     ),
                     4.sh,
                     InkWell(
-                      onTap: () {},
+                      onTap: () => controller.getImage(),
                       borderRadius: BorderRadius.circular(10),
                       highlightColor: ColorConstant.mainApp,
                       hoverColor: ColorConstant.mainApp,
@@ -499,12 +514,19 @@ class ZeedooScreenSixteenScreen extends StatelessWidget {
                           color: ColorConstant.containerColor.withOpacity(.9),
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: CustomText(
-                          title: AppString.uploadYourStoreLogoBTN,
-                          color: ColorConstant.buttonColor,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 14,
-                        ),
+                        child: controller.img == null
+                            ? CustomText(
+                                title: AppString.uploadYourStoreLogoBTN,
+                                color: ColorConstant.buttonColor,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 14,
+                              )
+                            : Image.file(
+                                controller.img!,
+                                fit: BoxFit.cover,
+                                height: 100,
+                                width: 100,
+                              ),
                       ),
                     ),
                     13.sh,

@@ -2,6 +2,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shahrukh_s_application1/core/utils/app_string.dart';
 import 'package:shahrukh_s_application1/core/utils/extensions.dart';
 import 'package:shahrukh_s_application1/features/staff/controller/staff_controller.dart';
+import 'package:shahrukh_s_application1/widgets/custom_dropdown.dart';
 import 'package:shahrukh_s_application1/widgets/custom_text.dart';
 import 'package:shahrukh_s_application1/widgets/custom_text_form_filed.dart';
 
@@ -88,9 +89,13 @@ class StaffView extends StatelessWidget {
                         fontSize: 12,
                       ),
                       4.sh,
-                      CustomTextFormField(
-                        enabledBorder: true,
-                        hintText: AppString.selectRoleHint,
+                      CustomDropdown<String>(
+                        hint: AppString.selectRoleHint,
+                        items: controller.roles,
+                        value: controller.selectedRole.isEmpty
+                            ? null
+                            : controller.selectedRole,
+                        onChanged: controller.selectRole,
                       ),
                       13.sh,
 
@@ -197,9 +202,13 @@ class StaffView extends StatelessWidget {
                         fontSize: 12,
                       ),
                       4.sh,
-                      CustomTextFormField(
-                        enabledBorder: true,
-                        hintText: AppString.category,
+                      CustomDropdown<String>(
+                        hint: AppString.category,
+                        items: controller.categories,
+                        value: controller.selectedCategory.isEmpty
+                            ? null
+                            : controller.selectedCategory,
+                        onChanged: controller.selectCategory,
                       ),
                       13.sh,
 
@@ -210,9 +219,13 @@ class StaffView extends StatelessWidget {
                         fontSize: 12,
                       ),
                       4.sh,
-                      CustomTextFormField(
-                        enabledBorder: true,
-                        hintText: AppString.subCategory,
+                      CustomDropdown<String>(
+                        hint: AppString.subCategory,
+                        items: controller.subCategories,
+                        value: controller.selectedSubCategory.isEmpty
+                            ? null
+                            : controller.selectedSubCategory,
+                        onChanged: controller.selectSubCategory,
                       ),
 
                       44.sh,

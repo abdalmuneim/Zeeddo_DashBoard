@@ -25,6 +25,7 @@ class CustomTextFormField extends StatefulWidget {
     this.maxLines = 1,
     this.minLines = 1,
     this.enabledBorder = true,
+    this.onTap,
     this.textAlign = TextAlign.start,
     this.isNumberOnly = false,
     this.keyboardType = TextInputType.text,
@@ -43,7 +44,7 @@ class CustomTextFormField extends StatefulWidget {
   final bool isNumberOnly;
   final bool? enabled, enabledBorder;
   final TextAlign textAlign;
-
+  final Function()? onTap;
   final double borderRadius;
   final TextEditingController? textEditingController;
   final TextDirection? textDirection;
@@ -64,6 +65,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
     return SizedBox(
       height: widget.height,
       child: TextFormField(
+        onTap: widget.onTap,
         maxLines: widget.maxLines,
         minLines: widget.minLines,
         enabled: widget.enabled,
@@ -88,15 +90,20 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           suffixIconColor: widget.suffixIconColor,
           prefixIcon: widget.prefixIcon,
           prefixIconColor: widget.prefixIconColor,
+          contentPadding: widget.labelText == null
+              ? EdgeInsets.only(bottom: 15, left: 12)
+              : null,
           hintText: widget.hintText,
           labelText: widget.labelText,
           labelStyle: Theme.of(context).textTheme.labelLarge?.copyWith(
-                fontSize: 18,
-                color: ColorConstant.labelTextColor,
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+                color: ColorConstant.buttonColor,
               ),
           hintStyle: Theme.of(context).textTheme.labelLarge?.copyWith(
-                fontSize: 18,
-                color: ColorConstant.grey,
+                fontSize: 14,
+                fontWeight: FontWeight.w400,
+                color: ColorConstant.labelTextColor,
               ),
           filled: true,
           fillColor: widget.fillColor,
@@ -123,6 +130,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             borderRadius: BorderRadius.circular(widget.borderRadius),
           ),
           focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: ColorConstant.redColor),
             borderRadius: BorderRadius.circular(widget.borderRadius),
           ),
         ),

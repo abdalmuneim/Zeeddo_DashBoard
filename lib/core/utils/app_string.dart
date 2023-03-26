@@ -1,4 +1,7 @@
 class AppString {
+  static String get camera => "Camera";
+  static String get gallery => "Gallery";
+
   ///login
   static String get loginTitle => "Start your \nShop";
   static String get notHaveAccount => "Don't have an account yet?";

@@ -100,8 +100,7 @@ class LoyaltyProgramView extends StatelessWidget {
                     4.sh,
                     CustomTextFormField(
                       enabledBorder: true,
-                      hintText: '',
-                      labelText: AppString.loyaltySystem,
+                      hintText: AppString.loyaltySystem,
                     ),
                     13.sh,
                     CustomText(
@@ -113,8 +112,7 @@ class LoyaltyProgramView extends StatelessWidget {
                     4.sh,
                     CustomTextFormField(
                       enabledBorder: true,
-                      hintText: '',
-                      labelText: AppString.promotionalDesc,
+                      hintText: AppString.promotionalDesc,
                     ),
                     18.sh,
                     CustomText(
@@ -132,7 +130,7 @@ class LoyaltyProgramView extends StatelessWidget {
                     ),
                     10.sh,
                     InkWell(
-                      onTap: () {},
+                      onTap: () => controller.getImage(),
                       borderRadius: BorderRadius.circular(10),
                       highlightColor: ColorConstant.mainApp,
                       hoverColor: ColorConstant.mainApp,
@@ -145,12 +143,19 @@ class LoyaltyProgramView extends StatelessWidget {
                           color: ColorConstant.containerColor.withOpacity(.9),
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: CustomText(
-                          title: AppString.dragAndDrop,
-                          color: ColorConstant.buttonColor,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 11,
-                        ),
+                        child: controller.imgAlternative == null
+                            ? CustomText(
+                                title: AppString.dragAndDrop,
+                                color: ColorConstant.buttonColor,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 11,
+                              )
+                            : Image.file(
+                                controller.imgAlternative!,
+                                fit: BoxFit.cover,
+                                height: 100,
+                                width: 100,
+                              ),
                       ),
                     ),
                     26.sh,

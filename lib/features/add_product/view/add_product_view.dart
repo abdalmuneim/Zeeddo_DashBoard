@@ -1,6 +1,7 @@
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shahrukh_s_application1/core/utils/app_string.dart';
 import 'package:shahrukh_s_application1/core/utils/extensions.dart';
+import 'package:shahrukh_s_application1/widgets/custom_dropdown.dart';
 import 'package:shahrukh_s_application1/widgets/custom_text.dart';
 import 'package:shahrukh_s_application1/widgets/custom_text_form_filed.dart';
 
@@ -85,9 +86,13 @@ class ZeedooScreenNineScreen extends StatelessWidget {
                       fontSize: 15,
                     ),
                     4.sh,
-                    CustomTextFormField(
-                      enabledBorder: true,
-                      textEditingController: controller.currencyCRT,
+                    CustomDropdown<String>(
+                      hint: AppString.selectYourShop,
+                      items: controller.currencies,
+                      value: controller.selectedCurrency.isEmpty
+                          ? null
+                          : controller.selectedCurrency,
+                      onChanged: controller.selectCurrency,
                     ),
                     13.sh,
                     CustomText(
@@ -133,9 +138,13 @@ class ZeedooScreenNineScreen extends StatelessWidget {
                       fontSize: 15,
                     ),
                     4.sh,
-                    CustomTextFormField(
-                      enabledBorder: true,
-                      hintText: AppString.tags,
+                    CustomDropdown<String>(
+                      hint: AppString.tags,
+                      items: controller.tags,
+                      value: controller.selectedTag.isEmpty
+                          ? null
+                          : controller.selectedTag,
+                      onChanged: controller.selectTag,
                     ),
                     13.sh,
                     CustomText(

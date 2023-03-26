@@ -1,4 +1,9 @@
+import 'dart:io';
+
+import 'package:flutter/material.dart';
 import 'package:shahrukh_s_application1/core/app_export.dart';
+import 'package:shahrukh_s_application1/core/utils/image_pic.dart';
+import 'package:shahrukh_s_application1/core/utils/utils.dart';
 
 class LoyaltyProgramController extends GetxController {
   bool _isLoading = false;
@@ -30,6 +35,10 @@ class LoyaltyProgramController extends GetxController {
 
   bool _reminderTimeSwitch = false;
   bool get reminderTimeSwitch => _reminderTimeSwitch;
+
+  File? _imgAlternative;
+  File? get imgAlternative => _imgAlternative;
+  String imageError = '';
 
   /// Activate switcher
   activateSwitcher(val) {
@@ -85,6 +94,17 @@ class LoyaltyProgramController extends GetxController {
     update();
   }
 
+  getImage() async {
+    FocusManager.instance.primaryFocus?.unfocus();
+
+    _imgAlternative = await ImagePic.showBottomSheetPic(ImageDimensions.Any);
+    if (_imgAlternative != null) {
+      imageError = '';
+      update();
+    }
+    update();
+  }
+
   submit() {
     _isLoading = true;
     update();
@@ -101,6 +121,7 @@ class LoyaltyProgramController extends GetxController {
 
   @override
   void onReady() {
+    Utils.askPermission();
     super.onReady();
   }
 

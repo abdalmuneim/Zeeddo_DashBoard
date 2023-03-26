@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:shahrukh_s_application1/core/app_export.dart';
 import 'package:shahrukh_s_application1/core/utils/app_string.dart';
-import 'package:shahrukh_s_application1/core/utils/color_util.dart';
+import 'package:shahrukh_s_application1/core/utils/image_pic.dart';
+import 'package:shahrukh_s_application1/core/utils/utils.dart';
 import 'package:shahrukh_s_application1/core/utils/toast_manager.dart';
 
 class ProductController extends GetxController {
@@ -47,6 +50,66 @@ class ProductController extends GetxController {
   bool get noWarranty => _noWarranty;
   bool get manufacturerWarranty => _manufacturerWarranty;
   bool get nonLocalWarranty => _nonLocalWarranty;
+
+  File? _img;
+  File? get img => _img;
+
+  final List<String> _tags = ['tag 1', 'tag 2'];
+  List<String> get tags => _tags;
+  String _selectedTag = '';
+  String get selectedTag => _selectedTag;
+
+  final List<String> _categories = [
+    'Category 1',
+    'Category 2',
+  ];
+  List<String> get categories => _categories;
+  String _selectedCategory = '';
+  String get selectedCategory => _selectedCategory;
+
+  final List<String> _subCategories = [
+    'subCategories 1',
+    'subCategories 2',
+  ];
+  List<String> get subCategories => _subCategories;
+  String _selectedSubCategory = '';
+  String get selectedSubCategory => _selectedSubCategory;
+
+  final List<String> _currency = [Constants.currencyINR];
+  List<String> get currencies => _currency;
+  String _selectedCurrency = Constants.currencyINR;
+  String get selectedCurrency => _selectedCurrency;
+
+  selectCurrency(String? value) {
+    _selectedCurrency = value!;
+    update();
+  }
+
+  selectTag(String? value) {
+    _selectedTag = value!;
+    update();
+  }
+
+  selectCategory(String? value) {
+    _selectedCategory = value!;
+    update();
+  }
+
+  selectSubCategory(String? value) {
+    _selectedSubCategory = value!;
+    update();
+  }
+
+  String imageError = '';
+  getImage() async {
+    FocusManager.instance.primaryFocus?.unfocus();
+    _img = await ImagePic.showBottomSheetPic(ImageDimensions.Any);
+    if (_img != null) {
+      imageError = '';
+      update();
+    }
+    update();
+  }
 
   switcherLocalSellerWarranty(bool value) {
     _localSellerWarranty = value;

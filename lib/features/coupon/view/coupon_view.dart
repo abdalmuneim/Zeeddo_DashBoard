@@ -1,6 +1,7 @@
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shahrukh_s_application1/core/utils/app_string.dart';
 import 'package:shahrukh_s_application1/core/utils/extensions.dart';
+import 'package:shahrukh_s_application1/widgets/custom_container.dart';
 import 'package:shahrukh_s_application1/widgets/custom_text.dart';
 import 'package:shahrukh_s_application1/widgets/custom_text_form_filed.dart';
 
@@ -128,9 +129,16 @@ class ZeedooScreenTwelveScreen extends StatelessWidget {
                       fontSize: 12,
                     ),
                     4.sh,
-                    CustomTextFormField(
-                      enabledBorder: true,
-                      hintText: AppString.startDate,
+                    GestureDetector(
+                      onTap: () => controller.selectDateTime,
+                      child: CustomContainer(
+                        child: CustomText(
+                          title: controller.selectedDate ?? AppString.startDate,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          color: ColorConstant.labelTextColor,
+                        ),
+                      ),
                     ),
                     13.sh,
 

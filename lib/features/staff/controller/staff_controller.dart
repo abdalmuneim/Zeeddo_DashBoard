@@ -2,10 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:shahrukh_s_application1/core/app_export.dart';
 import 'package:shahrukh_s_application1/core/utils/toast_manager.dart';
 import 'package:geocoding/geocoding.dart';
+import 'package:shahrukh_s_application1/core/utils/utils.dart';
 
 class StaffController extends GetxController {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -24,6 +24,43 @@ class StaffController extends GetxController {
   final city = TextEditingController();
   final state = TextEditingController();
   final postalCode = TextEditingController();
+
+  final List<String> _roles = ['role 1', 'role 2'];
+  List<String> get roles => _roles;
+  String _selectedRole = '';
+  String get selectedRole => _selectedRole;
+
+  final List<String> _categories = [
+    'Category 1',
+    'Category 2',
+  ];
+  List<String> get categories => _categories;
+  String _selectedCategory = '';
+  String get selectedCategory => _selectedCategory;
+
+  final List<String> _subCategories = [
+    'subCategories 1',
+    'subCategories 2',
+  ];
+  List<String> get subCategories => _subCategories;
+  String _selectedSubCategory = '';
+  String get selectedSubCategory => _selectedSubCategory;
+
+  selectRole(String? value) {
+    _selectedRole = value!;
+    update();
+  }
+
+  selectCategory(String? value) {
+    _selectedCategory = value!;
+    update();
+  }
+
+  selectSubCategory(String? value) {
+    _selectedSubCategory = value!;
+    update();
+  }
+
   addNew() {
     // if (_formKey.currentState!.validate()) {
     _isLoading = true;
@@ -49,42 +86,8 @@ class StaffController extends GetxController {
     postalCode.text = location[0].postalCode ?? "";
   }
 
-  late StreamSubscription<Position> positionStream;
-  Future<Position?> determinePosition() async {
-    try {
-      bool serviceEnabled;
-      LocationPermission permission;
-      serviceEnabled = await Geolocator.isLocationServiceEnabled();
-      if (!serviceEnabled) {
-        if (await Permission.location.isPermanentlyDenied) {
-        } else {
-          final result = await Permission.location.request();
-
-          serviceEnabled = result == PermissionStatus.granted;
-        }
-      }
-      permission = await Geolocator.checkPermission();
-      if (permission == LocationPermission.denied) {
-        await Geolocator.requestPermission();
-        if (permission == LocationPermission.denied) {
-          return null;
-        }
-      }
-
-      if (permission == LocationPermission.deniedForever) {
-        ToastManager.showError("please enable location");
-
-        return null;
-      }
-
-      return await Geolocator.getCurrentPosition();
-    } catch (error) {
-      rethrow;
-    }
-  }
-
   getLocation() async {
-    position = await determinePosition();
+    position = await Utils.determinePosition();
     if (position != null) {
       long = position!.longitude.toString();
       lat = position!.latitude.toString();

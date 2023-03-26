@@ -1,6 +1,8 @@
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shahrukh_s_application1/core/utils/app_string.dart';
 import 'package:shahrukh_s_application1/core/utils/extensions.dart';
+import 'package:shahrukh_s_application1/core/utils/image_pic.dart';
+import 'package:shahrukh_s_application1/widgets/custom_dropdown.dart';
 import 'package:shahrukh_s_application1/widgets/custom_text.dart';
 import 'package:shahrukh_s_application1/widgets/custom_text_form_filed.dart';
 
@@ -251,7 +253,7 @@ class ShopView extends StatelessWidget {
                     ),
                     4.sh,
                     InkWell(
-                      onTap: () {},
+                      onTap: () => controller.getImage(ImageDimensions.Logo),
                       borderRadius: BorderRadius.circular(10),
                       highlightColor: ColorConstant.mainApp,
                       hoverColor: ColorConstant.mainApp,
@@ -264,12 +266,19 @@ class ShopView extends StatelessWidget {
                           color: ColorConstant.containerColor.withOpacity(.9),
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: CustomText(
-                          title: AppString.uploadYourStoreLogoBTN,
-                          color: ColorConstant.buttonColor,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 14,
-                        ),
+                        child: controller.imgLogo == null
+                            ? CustomText(
+                                title: AppString.uploadYourStoreLogoBTN,
+                                color: ColorConstant.buttonColor,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 14,
+                              )
+                            : Image.file(
+                                controller.imgLogo!,
+                                fit: BoxFit.cover,
+                                height: 100,
+                                width: 100,
+                              ),
                       ),
                     ),
                     13.sh,
@@ -302,9 +311,13 @@ class ShopView extends StatelessWidget {
                       fontSize: 12,
                     ),
                     4.sh,
-                    CustomTextFormField(
-                      enabledBorder: true,
-                      hintText: AppString.category,
+                    CustomDropdown<String>(
+                      hint: AppString.category,
+                      items: controller.categories,
+                      value: controller.selectedCategory.isEmpty
+                          ? null
+                          : controller.selectedCategory,
+                      onChanged: controller.selectCategory,
                     ),
                     13.sh,
 
@@ -315,9 +328,13 @@ class ShopView extends StatelessWidget {
                       fontSize: 12,
                     ),
                     4.sh,
-                    CustomTextFormField(
-                      enabledBorder: true,
-                      hintText: AppString.subCategory,
+                    CustomDropdown<String>(
+                      hint: AppString.subCategory,
+                      items: controller.subCategories,
+                      value: controller.selectedSubCategory.isEmpty
+                          ? null
+                          : controller.selectedSubCategory,
+                      onChanged: controller.selectSubCategory,
                     ),
                     13.sh,
 
@@ -328,9 +345,13 @@ class ShopView extends StatelessWidget {
                       fontSize: 12,
                     ),
                     4.sh,
-                    CustomTextFormField(
-                      enabledBorder: true,
-                      hintText: AppString.tags,
+                    CustomDropdown<String>(
+                      hint: AppString.tags,
+                      items: controller.tags,
+                      value: controller.selectedTag.isEmpty
+                          ? null
+                          : controller.selectedTag,
+                      onChanged: controller.selectTag,
                     ),
                     13.sh,
 
@@ -362,7 +383,7 @@ class ShopView extends StatelessWidget {
                     ),
                     4.sh,
                     InkWell(
-                      onTap: () {},
+                      onTap: () => controller.getImage(ImageDimensions.Any),
                       borderRadius: BorderRadius.circular(10),
                       highlightColor: ColorConstant.mainApp,
                       hoverColor: ColorConstant.mainApp,
@@ -375,12 +396,19 @@ class ShopView extends StatelessWidget {
                           color: ColorConstant.containerColor.withOpacity(.9),
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: CustomText(
-                          title: AppString.uploadYourStoreLogoBTN,
-                          color: ColorConstant.buttonColor,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 14,
-                        ),
+                        child: controller.imgGallery == null
+                            ? CustomText(
+                                title: AppString.uploadYourStoreLogoBTN,
+                                color: ColorConstant.buttonColor,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 14,
+                              )
+                            : Image.file(
+                                controller.imgGallery!,
+                                fit: BoxFit.cover,
+                                height: 100,
+                                width: 100,
+                              ),
                       ),
                     ),
                     13.sh,

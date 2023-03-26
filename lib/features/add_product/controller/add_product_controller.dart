@@ -7,7 +7,25 @@ class AddProductController extends GetxController {
   GlobalKey<FormState> get formKey => _formKey;
   bool _isLoading = false;
   bool get isLoading => _isLoading;
-  final currencyCRT = TextEditingController(text: Constants.currency);
+
+  final List<String> _currency = [Constants.currency];
+  List<String> get currencies => _currency;
+  String _selectedCurrency = Constants.currency;
+  String get selectedCurrency => _selectedCurrency;
+  final List<String> _tags = ['tag 1', 'tag 2'];
+  List<String> get tags => _tags;
+  String _selectedTag = '';
+  String get selectedTag => _selectedTag;
+
+  selectTag(String? value) {
+    _selectedTag = value!;
+    update();
+  }
+
+  selectCurrency(String? value) {
+    _selectedCurrency = value!;
+    update();
+  }
 
   updateProduct() {
     // if (_formKey.currentState!.validate()) {

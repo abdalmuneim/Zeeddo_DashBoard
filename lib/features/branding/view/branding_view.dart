@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shahrukh_s_application1/core/app_export.dart';
 import 'package:shahrukh_s_application1/core/utils/app_string.dart';
 import 'package:shahrukh_s_application1/core/utils/extensions.dart';
+import 'package:shahrukh_s_application1/core/utils/image_pic.dart';
 import 'package:shahrukh_s_application1/features/branding/controller/branding_controller.dart';
 import 'package:shahrukh_s_application1/widgets/custom_text.dart';
 import 'package:shahrukh_s_application1/widgets/custom_text_form_filed.dart';
@@ -75,7 +76,7 @@ class ZeedooScreenTenScreen extends StatelessWidget {
                       ),
                       4.sh,
                       InkWell(
-                        onTap: () {},
+                        onTap: () => controller.getImage(ImageDimensions.Logo),
                         borderRadius: BorderRadius.circular(10),
                         highlightColor: ColorConstant.mainApp,
                         hoverColor: ColorConstant.mainApp,
@@ -88,12 +89,19 @@ class ZeedooScreenTenScreen extends StatelessWidget {
                             color: ColorConstant.containerColor.withOpacity(.9),
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          child: CustomText(
-                            title: AppString.logoBrowse,
-                            color: ColorConstant.buttonColor,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 14,
-                          ),
+                          child: controller.imgLogo == null
+                              ? CustomText(
+                                  title: AppString.logoBrowse,
+                                  color: ColorConstant.buttonColor,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 14,
+                                )
+                              : Image.file(
+                                  controller.imgLogo!,
+                                  fit: BoxFit.cover,
+                                  height: 100,
+                                  width: 100,
+                                ),
                         ),
                       ),
                       26.sh,
@@ -112,7 +120,8 @@ class ZeedooScreenTenScreen extends StatelessWidget {
                       ),
                       4.sh,
                       InkWell(
-                        onTap: () {},
+                        onTap: () =>
+                            controller.getImage(ImageDimensions.Slider),
                         borderRadius: BorderRadius.circular(10),
                         highlightColor: ColorConstant.mainApp,
                         hoverColor: ColorConstant.mainApp,
@@ -125,12 +134,19 @@ class ZeedooScreenTenScreen extends StatelessWidget {
                             color: ColorConstant.containerColor.withOpacity(.9),
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          child: CustomText(
-                            title: AppString.sliderBrowse,
-                            color: ColorConstant.buttonColor,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 14,
-                          ),
+                          child: controller.imgSlider == null
+                              ? CustomText(
+                                  title: AppString.sliderBrowse,
+                                  color: ColorConstant.buttonColor,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 14,
+                                )
+                              : Image.file(
+                                  controller.imgSlider!,
+                                  fit: BoxFit.cover,
+                                  height: 100,
+                                  width: 100,
+                                ),
                         ),
                       ),
                       26.sh,
@@ -149,7 +165,7 @@ class ZeedooScreenTenScreen extends StatelessWidget {
                       ),
                       4.sh,
                       InkWell(
-                        onTap: () {},
+                        onTap: () => controller.getImage(ImageDimensions.Fav),
                         borderRadius: BorderRadius.circular(10),
                         highlightColor: ColorConstant.mainApp,
                         hoverColor: ColorConstant.mainApp,
@@ -162,12 +178,19 @@ class ZeedooScreenTenScreen extends StatelessWidget {
                             color: ColorConstant.containerColor.withOpacity(.9),
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          child: CustomText(
-                            title: AppString.faviconImageBrowse,
-                            color: ColorConstant.buttonColor,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 14,
-                          ),
+                          child: controller.imgFav == null
+                              ? CustomText(
+                                  title: AppString.faviconImageBrowse,
+                                  color: ColorConstant.buttonColor,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 14,
+                                )
+                              : Image.file(
+                                  controller.imgFav!,
+                                  fit: BoxFit.cover,
+                                  height: 100,
+                                  width: 100,
+                                ),
                         ),
                       ),
                       26.sh,
@@ -186,7 +209,8 @@ class ZeedooScreenTenScreen extends StatelessWidget {
                       ),
                       4.sh,
                       InkWell(
-                        onTap: () {},
+                        onTap: () =>
+                            controller.getImage(ImageDimensions.Alternative),
                         borderRadius: BorderRadius.circular(10),
                         highlightColor: ColorConstant.mainApp,
                         hoverColor: ColorConstant.mainApp,
@@ -199,12 +223,19 @@ class ZeedooScreenTenScreen extends StatelessWidget {
                             color: ColorConstant.containerColor.withOpacity(.9),
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          child: CustomText(
-                            title: AppString.alternativeImageBrowse,
-                            color: ColorConstant.buttonColor,
-                            fontWeight: FontWeight.w500,
-                            fontSize: 14,
-                          ),
+                          child: controller.imgAlternative == null
+                              ? CustomText(
+                                  title: AppString.alternativeImageBrowse,
+                                  color: ColorConstant.buttonColor,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 14,
+                                )
+                              : Image.file(
+                                  controller.imgAlternative!,
+                                  fit: BoxFit.cover,
+                                  height: 100,
+                                  width: 100,
+                                ),
                         ),
                       ),
                       44.sh,
