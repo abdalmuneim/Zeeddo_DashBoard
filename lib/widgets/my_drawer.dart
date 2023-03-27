@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shahrukh_s_application1/core/app_export.dart';
-import 'package:shahrukh_s_application1/core/utils/app_string.dart';
+import 'package:shahrukh_s_application1/core/resources/app_string.dart';
+
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({Key? key, required this.scaffoldKey}) : super(key: key);

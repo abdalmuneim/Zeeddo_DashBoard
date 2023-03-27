@@ -2,6 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:shahrukh_s_application1/core/resources/localization/app_localization.dart';
+import 'package:shahrukh_s_application1/core/resources/theme/app_style.dart';
 
 import 'core/app_export.dart';
 
@@ -26,7 +28,7 @@ class MyApp extends StatelessWidget {
       translations: AppLocalization(),
       locale: Get.deviceLocale, //for setting localization strings
       fallbackLocale: Locale('en', 'US'),
-      title: 'shahrukh_s_application1',
+      title: 'zeeddo',
       initialRoute: AppRoutes.initialRoute,
       getPages: AppRoutes.pages,
     );

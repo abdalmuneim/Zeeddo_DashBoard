@@ -1,4 +1,6 @@
-import 'package:shahrukh_s_application1/core/utils/app_string.dart';
+import 'package:shahrukh_s_application1/core/resources/app_string.dart';
+import 'package:shahrukh_s_application1/core/resources/color_constant.dart';
+
 import 'package:shahrukh_s_application1/core/utils/extensions.dart';
 import 'package:shahrukh_s_application1/core/utils/validators.dart';
 import 'package:shahrukh_s_application1/widgets/custom_text.dart';

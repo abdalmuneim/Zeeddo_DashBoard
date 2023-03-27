@@ -1,7 +1,4 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:shahrukh_s_application1/core/app_export.dart';
 import 'package:shahrukh_s_application1/core/utils/toast_manager.dart';
 import 'package:shahrukh_s_application1/core/utils/utils.dart';
@@ -12,24 +9,94 @@ class CouponController extends GetxController {
   bool _isLoading = false;
   bool get isLoading => _isLoading;
 
-  String? _selectedDate;
-  String? get selectedDate => _selectedDate;
+  String? _selectedStartDate;
+  String? get selectedStartDate => _selectedStartDate;
+  String? _selectedStartTime;
+  String? get selectedStartTime => _selectedStartTime;
+  String? _selectedExpiryDate;
+  String? get selectedExpiryDate => _selectedExpiryDate;
+  String? _selectedExpiryTime;
+  String? get selectedExpiryTime => _selectedExpiryTime;
 
-  final freeShippingCTR = TextEditingController(text: 'Yes');
-  final excludedOfferProductCTR = TextEditingController(text: 'Yes');
+  List<String> _numbers = ['1', '2'];
+  List<String> get numbers => _numbers;
+  String _selectedNumberOfUser = '';
+  String get selectedNumberOfUser => _selectedNumberOfUser;
+  String _selectedNumberFrequencyOfUser = '';
+  String get selectedNumberFrequencyOfUser => _selectedNumberFrequencyOfUser;
 
-  selectDateTime() {
-    log('dateFormat');
-    DateFormat dateFormat = DateFormat("yyyy-MM-dd");
+  List<String> _item = ['Yes', 'No'];
+  List<String> get item => _item;
+  late String _selectedFreeShipping;
+  String get selectedFreeShipping => _selectedFreeShipping;
+  late String _selectedExcludedOffer;
+  String get selectedExcludedOffer => _selectedExcludedOffer;
+
+  selectFreeShipping(String? value) {
+    _selectedFreeShipping = value!;
+    update();
+  }
+
+  selectExcludedOffer(String? value) {
+    _selectedExcludedOffer = value!;
+    update();
+  }
+
+  selectNumberOfUser(String? value) {
+    _selectedNumberOfUser = value!;
+    update();
+  }
+
+  selectNumberFrequencyOfUser(String? value) {
+    _selectedNumberFrequencyOfUser = value!;
+    update();
+  }
+
+  selectDateTime() async {
     Utils.chooseDate(
-      (DateTime? value) {
+      (String? value) {
         if (value != null) {
-          print(value);
-          _selectedDate = dateFormat.format(value);
+          _selectedStartDate = value;
           update();
         }
       },
       initialDate: DateTime.now(),
+    );
+  }
+
+  selectTime() async {
+    Utils.chooseTime(
+      (String? value) {
+        if (value != null) {
+          _selectedStartTime = value;
+          update();
+        }
+      },
+      initialTime: TimeOfDay.fromDateTime(DateTime.now()),
+    );
+  }
+
+  selectExpiryDate() async {
+    Utils.chooseDate(
+      (String? value) {
+        if (value != null) {
+          _selectedExpiryDate = value;
+          update();
+        }
+      },
+      initialDate: DateTime.now(),
+    );
+  }
+
+  selectExpiryTime() async {
+    Utils.chooseTime(
+      (String? value) {
+        if (value != null) {
+          _selectedExpiryTime = value;
+          update();
+        }
+      },
+      initialTime: TimeOfDay.fromDateTime(DateTime.now()),
     );
   }
 
@@ -48,8 +115,16 @@ class CouponController extends GetxController {
   }
 
   @override
+  void onInit() {
+    _selectedFreeShipping = _item.first;
+    _selectedExcludedOffer = _item.first;
+    super.onInit();
+  }
+
+  @override
   void onReady() {
     Utils.askPermission();
+
     super.onReady();
   }
 

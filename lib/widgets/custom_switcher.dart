@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
-import 'package:shahrukh_s_application1/core/utils/color_constant.dart';
+import 'package:shahrukh_s_application1/core/resources/color_constant.dart';
 
 class CustomSwitcher extends StatelessWidget {
   const CustomSwitcher({Key? key, required this.status, required this.onToggle})

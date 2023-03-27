@@ -1,9 +1,12 @@
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:shahrukh_s_application1/core/utils/app_string.dart';
+import 'package:shahrukh_s_application1/core/resources/app_string.dart';
+import 'package:shahrukh_s_application1/core/resources/color_constant.dart';
+
 import 'package:shahrukh_s_application1/core/utils/extensions.dart';
-import 'package:shahrukh_s_application1/widgets/custom_container.dart';
+import 'package:shahrukh_s_application1/widgets/custom_dropdown.dart';
 import 'package:shahrukh_s_application1/widgets/custom_text.dart';
 import 'package:shahrukh_s_application1/widgets/custom_text_form_filed.dart';
+import 'package:shahrukh_s_application1/widgets/date_pic.dart';
 
 import '../controller/coupon_controller.dart';
 import 'package:flutter/material.dart';
@@ -129,16 +132,10 @@ class ZeedooScreenTwelveScreen extends StatelessWidget {
                       fontSize: 12,
                     ),
                     4.sh,
-                    GestureDetector(
-                      onTap: () => controller.selectDateTime,
-                      child: CustomContainer(
-                        child: CustomText(
-                          title: controller.selectedDate ?? AppString.startDate,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          color: ColorConstant.labelTextColor,
-                        ),
-                      ),
+                    DateTimePic(
+                      onChangedDate: () => controller.selectDateTime(),
+                      selectDateTime:
+                          controller.selectedStartDate ?? AppString.startDate,
                     ),
                     13.sh,
 
@@ -149,10 +146,10 @@ class ZeedooScreenTwelveScreen extends StatelessWidget {
                       fontSize: 12,
                     ),
                     4.sh,
-                    CustomTextFormField(
-                      enabledBorder: true,
-                      hintText: AppString.timeHint,
-                      // textEditingController: controller.startTime,
+                    DateTimePic(
+                      onChangedDate: () => controller.selectTime(),
+                      selectDateTime:
+                          controller.selectedStartTime ?? AppString.timeHint,
                     ),
                     13.sh,
 
@@ -163,10 +160,10 @@ class ZeedooScreenTwelveScreen extends StatelessWidget {
                       fontSize: 12,
                     ),
                     4.sh,
-                    CustomTextFormField(
-                      enabledBorder: true,
-                      hintText: AppString.expiryDate,
-                      // textEditingController: controller.expiryDate,
+                    DateTimePic(
+                      onChangedDate: () => controller.selectExpiryDate(),
+                      selectDateTime:
+                          controller.selectedExpiryDate ?? AppString.expiryDate,
                     ),
                     13.sh,
 
@@ -177,10 +174,10 @@ class ZeedooScreenTwelveScreen extends StatelessWidget {
                       fontSize: 12,
                     ),
                     4.sh,
-                    CustomTextFormField(
-                      enabledBorder: true,
-                      hintText: AppString.timeHint,
-                      // textEditingController: controller.expiryTime,
+                    DateTimePic(
+                      onChangedDate: () => controller.selectExpiryTime(),
+                      selectDateTime:
+                          controller.selectedExpiryTime ?? AppString.timeHint,
                     ),
                     13.sh,
 
@@ -191,9 +188,13 @@ class ZeedooScreenTwelveScreen extends StatelessWidget {
                       fontSize: 12,
                     ),
                     4.sh,
-                    CustomTextFormField(
-                      enabledBorder: true,
-                      textEditingController: controller.freeShippingCTR,
+                    CustomDropdown<String>(
+                      hint: AppString.freeShipping,
+                      items: controller.item,
+                      value: controller.selectedFreeShipping.isEmpty
+                          ? null
+                          : controller.selectedFreeShipping,
+                      onChanged: controller.selectFreeShipping,
                     ),
                     13.sh,
 
@@ -204,10 +205,13 @@ class ZeedooScreenTwelveScreen extends StatelessWidget {
                       fontSize: 12,
                     ),
                     4.sh,
-                    CustomTextFormField(
-                      enabledBorder: true,
-                      hintText: AppString.category,
-                      textEditingController: controller.excludedOfferProductCTR,
+                    CustomDropdown<String>(
+                      hint: AppString.excludedOfferProduct,
+                      items: controller.item,
+                      value: controller.selectedFreeShipping.isEmpty
+                          ? null
+                          : controller.selectedFreeShipping,
+                      onChanged: controller.selectExcludedOffer,
                     ),
                     13.sh,
 
@@ -218,9 +222,13 @@ class ZeedooScreenTwelveScreen extends StatelessWidget {
                       fontSize: 12,
                     ),
                     4.sh,
-                    CustomTextFormField(
-                      enabledBorder: true,
-                      hintText: AppString.selectNumber,
+                    CustomDropdown<String>(
+                      hint: AppString.selectNumber,
+                      items: controller.numbers,
+                      value: controller.selectedNumberOfUser.isEmpty
+                          ? null
+                          : controller.selectedNumberOfUser,
+                      onChanged: controller.selectNumberOfUser,
                     ),
                     13.sh,
 
@@ -231,9 +239,13 @@ class ZeedooScreenTwelveScreen extends StatelessWidget {
                       fontSize: 12,
                     ),
                     4.sh,
-                    CustomTextFormField(
-                      enabledBorder: true,
-                      hintText: AppString.selectNumber,
+                    CustomDropdown<String>(
+                      hint: AppString.selectNumber,
+                      items: controller.numbers,
+                      value: controller.selectedNumberFrequencyOfUser.isEmpty
+                          ? null
+                          : controller.selectedNumberFrequencyOfUser,
+                      onChanged: controller.selectNumberFrequencyOfUser,
                     ),
 
                     44.sh,

@@ -2,7 +2,8 @@ import 'package:flutter/widgets.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:shahrukh_s_application1/core/app_export.dart';
 import 'package:shahrukh_s_application1/core/constants/fields.dart';
-import 'package:shahrukh_s_application1/core/utils/app_string.dart';
+import 'package:shahrukh_s_application1/core/resources/app_string.dart';
+
 import 'package:shahrukh_s_application1/core/utils/toast_manager.dart';
 
 class LoginController extends GetxController {

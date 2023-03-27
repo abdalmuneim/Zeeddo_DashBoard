@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import 'package:intl/intl.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:shahrukh_s_application1/core/utils/toast_manager.dart';
 
@@ -31,26 +32,24 @@ class Utils {
   }
 
   static void chooseDate(
-    ValueChanged<DateTime?> onChangedDate, {
+    ValueChanged<String?> onChangedDate, {
     DateTime? initialDate,
   }) async {
-    print('_pickedDate');
-
     DateTime? _pickedDate = await showDatePicker(
       context: Get.context!,
       initialDate: initialDate ?? DateTime.now(),
       firstDate: initialDate ?? DateTime.now(),
       lastDate: DateTime(DateTime.now().year + 7),
     );
-    print(_pickedDate);
-
     if (_pickedDate != null) {
-      onChangedDate(_pickedDate);
+      DateFormat dateFormat = DateFormat("dd-MM-yyyy");
+      final String dateTime = dateFormat.format(_pickedDate);
+      onChangedDate(dateTime);
     }
   }
 
   static void chooseTime(
-    ValueChanged<TimeOfDay?> onChangedTime, {
+    ValueChanged<String?> onChangedTime, {
     TimeOfDay? initialTime,
   }) async {
     TimeOfDay? _pickedTime = await showTimePicker(
@@ -58,7 +57,9 @@ class Utils {
         // initialEntryMode: TimePickerEntryMode.input,
         initialTime: initialTime ?? TimeOfDay.fromDateTime(DateTime.now()));
     if (_pickedTime != null) {
-      onChangedTime(_pickedTime);
+      final DateFormat timeFormat = DateFormat('hh:mm a');
+      final String time = _pickedTime.format(Get.context!);
+      onChangedTime(time);
     } else {}
   }
 

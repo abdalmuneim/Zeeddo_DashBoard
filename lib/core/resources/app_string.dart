@@ -119,6 +119,8 @@ class AppString {
 
   /// theme customize
   static String themeCustomize = "Theme Customize";
+  static String theme = "Theme";
+  static String selectTheme = "Select Theme";
 
   /// Add Product
   static String addProduct = "Add Product";

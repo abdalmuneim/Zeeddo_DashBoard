@@ -1,7 +1,7 @@
 // 🐦 Flutter imports:
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:shahrukh_s_application1/core/utils/app_string.dart';
+import 'package:shahrukh_s_application1/core/resources/app_string.dart';
 
 enum ValidationType {
   phone,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shahrukh_s_application1/core/app_export.dart';
+import 'package:shahrukh_s_application1/core/resources/color_constant.dart';
 
 class AppStyle {
   static TextStyle txtRobotoRegular16 = TextStyle(

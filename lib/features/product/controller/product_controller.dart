@@ -2,7 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:shahrukh_s_application1/core/app_export.dart';
-import 'package:shahrukh_s_application1/core/utils/app_string.dart';
+import 'package:shahrukh_s_application1/core/resources/app_string.dart';
+import 'package:shahrukh_s_application1/core/resources/color_constant.dart';
+
 import 'package:shahrukh_s_application1/core/utils/image_pic.dart';
 import 'package:shahrukh_s_application1/core/utils/utils.dart';
 import 'package:shahrukh_s_application1/core/utils/toast_manager.dart';
@@ -18,6 +20,7 @@ class ProductController extends GetxController {
   bool _isFeature = false;
   bool _isPopular = false;
   bool _isShippingFree = false;
+
   bool get isFeature => _isFeature;
   bool get isPopular => _isPopular;
   bool get isShippingFree => _isShippingFree;
@@ -43,12 +46,12 @@ class ProductController extends GetxController {
   String get selectedWeightUnit => _selectedWeightUnit;
 
   bool _localSellerWarranty = false;
-  bool _noWarranty = false;
-  bool _manufacturerWarranty = false;
-  bool _nonLocalWarranty = false;
   bool get localSellerWarranty => _localSellerWarranty;
-  bool get noWarranty => _noWarranty;
+  bool _manufacturerWarranty = false;
   bool get manufacturerWarranty => _manufacturerWarranty;
+  bool _noWarranty = false;
+  bool get noWarranty => _noWarranty;
+  bool _nonLocalWarranty = false;
   bool get nonLocalWarranty => _nonLocalWarranty;
 
   File? _img;

@@ -3,7 +3,8 @@ import 'dart:io' as io;
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shahrukh_s_application1/core/app_export.dart';
-import 'package:shahrukh_s_application1/core/utils/app_string.dart';
+import 'package:shahrukh_s_application1/core/resources/app_string.dart';
+
 import 'package:shahrukh_s_application1/widgets/custom_text.dart';
 
 enum ImageDimensions {

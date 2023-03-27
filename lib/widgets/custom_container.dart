@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shahrukh_s_application1/core/utils/color_constant.dart';
+import 'package:shahrukh_s_application1/core/resources/color_constant.dart';
+
 
 class CustomContainer extends StatelessWidget {
   const CustomContainer({Key? key, required this.child}) : super(key: key);

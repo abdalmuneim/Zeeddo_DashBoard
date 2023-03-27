@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shahrukh_s_application1/core/app_export.dart';
-import 'package:shahrukh_s_application1/core/utils/app_string.dart';
+import 'package:shahrukh_s_application1/core/resources/app_string.dart';
+import 'package:shahrukh_s_application1/core/resources/color_constant.dart';
+
 import 'package:shahrukh_s_application1/core/utils/extensions.dart';
 import 'package:shahrukh_s_application1/features/product/controller/product_controller.dart';
 import 'package:shahrukh_s_application1/widgets/custom_dropdown.dart';
@@ -658,7 +660,7 @@ class ZeedooScreenSixteenScreen extends StatelessWidget {
                             ),
                             4.sh,
                             CustomSwitcher(
-                              status: controller.isFeature,
+                              status: controller.manufacturerWarranty,
                               onToggle: controller.switcherManufacturerWarranty,
                             ),
                           ],
@@ -674,7 +676,7 @@ class ZeedooScreenSixteenScreen extends StatelessWidget {
                             ),
                             4.sh,
                             CustomSwitcher(
-                              status: controller.isFeature,
+                              status: controller.noWarranty,
                               onToggle: controller.switcherNoWarranty,
                             ),
                             16.sh,
@@ -686,7 +688,7 @@ class ZeedooScreenSixteenScreen extends StatelessWidget {
                             ),
                             4.sh,
                             CustomSwitcher(
-                              status: controller.isFeature,
+                              status: controller.nonLocalWarranty,
                               onToggle: controller.switcherNonLocalWarranty,
                             ),
                           ],
